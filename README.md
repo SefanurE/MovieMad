@@ -1,6 +1,10 @@
 # team-project-n-18 - Movie Mad
 team-project-n-18 created by GitHub Classroom
 
+## Contributors
+
+Sarulatha S., Sefanur E., Mac A., JamesT., Redeat A., Deshan A.
+
 ## Branches
 
  * develop: development branch
