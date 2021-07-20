@@ -1,0 +1,86 @@
+.person {
+    border-style: solid;
+    padding: 2px 16px;
+    margin: auto;
+    width: 80%;
+}
+
+dt {
+    font-weight: 900;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
+/* Person's full name */
+#personNameContainer {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+#personName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: black;
+    padding: 10px 15px;
+    border: #ffb31a solid 2px;
+    border-radius: 10px;
+}
+
+#FilmographyTable {
+    width: 80%;
+    margin: auto;
+}
+
+/* Divider section - code modified from 'HR with centered text' by Scott Zirkel: https://codepen.io/scottzirkel/pen/yNxNME */
+
+.divider {
+    line-height: 1em;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: black;
+    text-align: center;
+    height: 1.5em;
+    opacity: .5;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+
+.divider::before {
+    content: '';
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 5px;
+}
+
+.divider::after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    color: #818078;
+    background-color: var(--backgroundColor);;
+}

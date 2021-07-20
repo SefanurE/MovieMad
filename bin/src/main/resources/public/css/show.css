@@ -1,0 +1,169 @@
+.show {
+border-style: solid;
+padding: 2px 16px;
+margin: auto;
+  width: 80%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+}
+
+dt {
+font-weight: 900;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+/* Title */
+#titleContainer {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+#titleAreaImage {
+  width: 100%;
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+  transform: translate(0px, -20%);
+}
+
+#showTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: black;
+  padding: 10px 15px;
+  border: #ffb31a solid 2px;
+  border-radius: 10px;
+}
+
+/* Credit Roll */
+
+#creditRollTable {
+  width: 80%;
+  margin: auto;
+}
+
+
+
+/* Divider section - code modified from 'HR with centered text' by Scott Zirkel: https://codepen.io/scottzirkel/pen/yNxNME */
+
+
+.divider {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+
+.divider::before {
+  content: '';
+  background: linear-gradient(to right, transparent, #818078, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 5px;
+}
+
+.divider::after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+
+  padding: 0 .5em;
+  line-height: 1.5em;
+  color: #818078;
+  background-color: var(--backgroundColor);;
+}
+
+
+/* Reviews Section */
+
+#reviewSection {
+  margin-bottom: 100px;
+  margin-top: 50px;
+
+}
+
+#reviewSection h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#reviewContainer {
+  width: 70%;
+  margin: 10px auto;
+}
+
+#reviewLinkContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#noReviewMessage {
+  text-align: center;
+  margin: 50px 0;
+  font-size: var(--formFontSize);
+}
+
+#reviewButton {
+  width: 100%;
+  background-color: white;
+  color: black;
+  height: 50px;
+  font-size: 20px;
+  border-style: solid;
+  border-color: var(--textColor);
+  border-width: 1px;
+  border-radius: 15px;
+
+
+}
+
+#reviewButton:hover {
+  background-color: #d7d7d7;
+  cursor: pointer;
+}
+
+
+

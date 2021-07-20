@@ -1,0 +1,145 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+<link rel="stylesheet" href="/css/showEntryStylesheet.css">
+
+				 <script>
+function suspendFunction() {
+  confirm("Show is suspended.");
+}
+function deleteFunction() {
+  confirm("Show is deleted");
+}
+</script>
+
+        <div id="contentBox">
+
+            <div class="card">
+
+				 <!-- img would go here -->
+				<div id="editTitleContainer">
+					<div id="child1">
+						<h1>Edit show</h1>
+					</div>
+					<div id="child2">
+						<a id="backButtonEditShow" href="/show/$show.showID"> $show.showTitle</a>
+					</div>
+
+
+				</div>
+
+            	
+				<form id="form" method="post" form action="/showEditPost/$show.showID" enctype="multipart/form-data">
+
+
+					#if ($emptyFieldError)
+						<div class="formGroup">
+							<p id="emptyFieldError">Empty fields are not permitted. Please fill in the fields properly.</p>
+						</div>
+					#end
+
+			<!-- Show Title -->
+			
+			<div class="formGroup">
+				<label for="title">Show Title:</label>
+				<input type="text"  id="title" name="title" value="$show.showTitle" required>
+			</div>
+				<!-- Show Type (movie or series) -->
+			<div class="formGroup">
+				<label for="type">Show Type:</label>
+				<div class="typeRadio">
+					<input type="radio" id="movie" name="type" value="movie" required>
+					<label for="movie">Movie</label><br>
+					<input type="radio" id="series" name="type" value="series">
+					<label for="series">Series</label><br>
+				</div>
+			</div>
+			
+			<!-- Show Genre -->
+			<div class="formGroup">
+				<label for="genre">Show Genre:</label>
+				<input type="text"  id="genre" name="genre" value="$show.genre" required>
+			</div>
+
+			<!-- Show Length -->
+			<div class="formGroup">
+				<label for="length">Show Length:</label>
+				<input type="number"  min="0" max="7" step="0.1" id="length" name="length" value="$show.length" required>
+			</div>
+
+			<!-- Show Release Year -->
+			<div class="formGroup">
+				<label for="yearpicker">Show Release Year:</label>
+
+				<!-- Year picker jquery plugin by SaravananEst: https://github.com/saravanajd/YearPicker -->
+				<input type="text" id="yearpicker" class="yearpicker" name="year" value="$show.year"  required>
+				<script>
+					$(window).on('load', function() {
+
+						let currentYear =  new Date().getFullYear();
+
+						// Prevents user from selecting year in future
+						$('.yearpicker').yearpicker({
+							endYear:currentYear
+						});
+
+						// Prevents user from typing in input box
+						$(".yearpicker").keydown(function () {
+							return false;
+						});
+
+					});
+
+				</script>
+			</div>
+
+			<!-- Show Description -->
+			<div class="formGroup">
+				<label for="description">Show Description:</label>
+				<textarea id="description" name="description" required> $show.getDescription() </textarea>
+			</div>
+
+			<!-- should i add images already there? or just allow user to add more? -->
+			<div class="formGroup">
+				<label for="file">Show Image:</label>
+				<input type="file" name="file" value="file" required>
+			</div>
+
+
+			<!-- If user is PCo, the PCo value is their name. Otherwise, returns a drop down list of all pco's available. Do i need to add Usertype?-->
+			#if($userType=="pco")
+				<div class="formGroup">
+					<label for="pco">Show Production Company:</label>
+					<input type="text"  id="pco" name="pco" value="$pcoName" readonly>
+				</div>
+			#else
+				<div class="formGroup">
+					<label for="pco">Show Production Company:</label>
+					<select name="pco" id="pco" value="thefix"required>
+
+						## Loops through PCo list:
+						#foreach($pco in $pcoList)
+							<option value="$pco">$pco</option>
+						#end
+
+					</select>
+				</div>
+			#end
+
+
+
+			<div class="formGroup">
+				<input type="submit" class="submit" value="Save Edit">
+			
+			</div>
+	
+
+ 
+ 
+
+
+
+       </div>
+    
+    	</form>
+    #end
+

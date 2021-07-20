@@ -1,0 +1,149 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+<link rel="stylesheet" href="/css/showEntryStylesheet.css">
+
+<!-- Year picker jquery plugin by SaravananEst: https://github.com/saravanajd/YearPicker -->
+<link rel="stylesheet" href="/plugins/yearpicker/yearpicker.css">
+<script src="/plugins/yearpicker/yearpicker.js" async></script>
+
+## variables needed from model:
+## $pcoList --> List of PCo names, for when user is not a PCo.
+## $pcoName -->	The name of the production company when user is a PCo account.
+## $userType --> ViewUtil already adds to model
+
+## information sent over POST:
+## type, title, genre, length, year, description, image, pco
+
+
+<!-- Back button -->
+<div  id="backButtonContainer" >
+	<a href="/home" type="submit" id="backButton">Back</a>
+</div>
+
+<!-- All show entry form content will be in here -->
+<div id="contentBox">
+
+
+	<!-- Heading section -->
+	<div id="titleArea">
+
+		<h3 id="titleAreaHeading"> Add Show </h3>
+
+	</div>
+
+
+	<!-- The show entry form will be in this section -->
+	<div id="formArea">
+		<div id="divider"></div>
+
+		<!-- Show entry form -->
+		<form id="form" method="post" enctype="multipart/form-data">
+
+			#if ($emptyFieldError)
+				<div class="formGroup">
+					<p id="emptyFieldError">Empty fields are not permitted. Please fill in the fields properly.</p>
+				</div>
+			#end
+
+			<!-- Show Type (movie or series) -->
+			<div class="formGroup">
+				<label for="type">Show Type:</label>
+				<div class="typeRadio">
+					<input type="radio" id="movie" name="type" value="movie" required>
+					<label for="movie">Movie</label><br>
+					<input type="radio" id="series" name="type" value="series">
+					<label for="series">Series</label><br>
+				</div>
+			</div>
+
+			<!-- Show Title -->
+			<div class="formGroup">
+				<label for="title">Show Title:</label>
+				<input type="text"  id="title" name="title" placeholder="Write show title here" required>
+			</div>
+
+			<!-- Show Genre -->
+			<div class="formGroup">
+				<label for="genre">Show Genre:</label>
+				<input type="text"  id="genre" name="genre" placeholder="Write show genre here" required>
+			</div>
+
+			<!-- Show Length -->
+			<div class="formGroup">
+				<label for="length">Show Length:</label>
+				<input type="number"  min="0" max="7" step="0.1" id="length" name="length" placeholder="Write show length in hours here" required>
+			</div>
+
+			<!-- Show Release Year -->
+			<div class="formGroup">
+				<label for="yearpicker">Show Release Year:</label>
+
+				<!-- Year picker jquery plugin by SaravananEst: https://github.com/saravanajd/YearPicker -->
+				<input type="text" id="yearpicker" class="yearpicker" name="year" value="" placeholder="Select show release year" required autocomplete="off">
+				<script>
+					$(window).on('load', function() {
+
+						let currentYear =  new Date().getFullYear();
+
+						// Prevents user from selecting year in future
+						$('.yearpicker').yearpicker({
+							endYear:currentYear
+						});
+
+						// Prevents user from typing in input box
+						$(".yearpicker").keydown(function (event) {
+							if(event.which != 9) {
+								return false;
+							}
+						});
+
+					});
+
+				</script>
+			</div>
+
+			<!-- Show Description -->
+			<div class="formGroup">
+				<label for="description">Show Description:</label>
+				<textarea id="description" name="description" placeholder="Write a description here" required></textarea>
+			</div>
+
+			<!-- Show Image / Poster -->
+			<div class="formGroup">
+				<label for="file">Show Image:</label>
+				<input type="file" name="file" value="file" required>
+			</div>
+
+
+			<!-- If user is PCo, the PCo value is their name. Otherwise, returns a drop down list of all pco's available. -->
+			#if($userType=="pco")
+				<div class="formGroup">
+					<label for="pco">Show Production Company:</label>
+					<input type="text"  id="pco" name="pco" value="$pcoName" readonly>
+				</div>
+			#else
+				<div class="formGroup">
+					<label for="pco">Show Production Company:</label>
+					<select name="pco" id="pco" required>
+
+						## Loops through PCo list:
+						#foreach($pco in $pcoList)
+							<option value="$pco">$pco</option>
+						#end
+
+					</select>
+				</div>
+			#end
+
+
+
+			<div class="formGroup">
+				<input type="submit" class="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+
+
+</div>
+
+#end

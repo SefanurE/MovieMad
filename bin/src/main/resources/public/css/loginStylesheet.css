@@ -1,0 +1,44 @@
+#loginForm > div > label {
+	flex-basis: 100px;
+	align-self: center;
+	font-size: var(- -formFontSize);
+	padding: 10px;
+}
+
+#loginForm > div > input {
+	width: 70%;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	padding: 10px;
+	font-size: var(- -formFontSize);
+	margin-left: auto;
+}
+
+#loginForm {
+	margin: auto;
+	width: 450px;
+	padding-bottom: 10px;
+	display: grid;
+	text-align: center;
+}
+
+#loginForm > div {
+	padding: 5px;
+}
+
+#loginForm > div > input[type=submit] {
+	width: 100px;
+	margin-left: auto;
+	background-color: var(- -secondaryColor);
+	height: 50px;
+	font-size: 20px;
+	border-style: solid;
+	border-color: var(- -textColor);
+	border-width: 1px;
+}
+
+#loginForm > div > input[type=submit]:hover {
+	background-color: var(- -secondaryColorSlightlyDarker);
+	cursor: pointer;
+}

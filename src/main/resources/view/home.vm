@@ -1,0 +1,28 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+
+    <link rel="stylesheet" href="/css/home.css">
+    <h1> Home </h1>
+    <h2> Featured movies: </h2>
+
+    <!-- show cards -->
+    <div class="cardContainer">
+        
+        #foreach($show in $shows)
+            <div class="card">
+                <!-- img would go here -->
+                <img src=$show.getImagePath() height="200px" width="150px"alt="no image">
+                <a href="/show/$show.getShowID()"> $show.getShowTitle()</a>
+                    	#if ($userType == "admin")
+	                        <form action="/showEdit/$show.getShowID()" method="POST">	                               
+		                        <button type="submit" name="action" value="edit" id="edit">
+		                            <i class="material-icons">edit</i> Edit
+		                        </button>		                        
+	                   	 	</form>
+                   		#end
+            </div>
+        #end
+    </div>
+
+
+#end

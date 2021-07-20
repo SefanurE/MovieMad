@@ -1,0 +1,42 @@
+#searchResultsContainer {
+    margin: auto;
+    margin-top: 100px;
+    width: 80%;
+    margin-bottom: 200px;
+}
+
+/* Title */
+
+#titleContainer {
+
+
+}
+
+/* Categories Container */
+
+.categoryContainer {
+    background-color: #c7c7c7;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.categoryContainer > h2 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Result Container */
+
+.resultContainer > * {
+    font-size: var(--formFontSize);
+}
+
+.resultContainer > a {
+    text-decoration: inherit;
+    color: black;
+}
+
+.resultContainer > a:hover {
+    color: #ffb31a;
+}

@@ -1,0 +1,64 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+<link rel="stylesheet" href="/css/searchResultsStylesheet.css">
+
+    <div id="searchResultsContainer">
+
+        <!-- Title -->
+        <div id="titleContainer">
+            #if($noResults)
+                <h1>Sorry, there were no results for "$searchQuery"</h1>
+            #else
+                <h1>Showing results for "$searchQuery"</h1>
+            #end
+        </div>
+
+
+        ## If there are any results, show them by category
+        #if(!$noResults)
+
+            <!-- Movies -->
+            #if(!($movies.isEmpty()))
+                <div class="categoryContainer">
+                    <h2>Movies</h2>
+                    #foreach($show in $movies)
+                        <div class="resultContainer">
+                            <a href="/show/$show.showID">$show.showTitle</a><span> ($show.getYear())</span>
+                        </div>
+                    #end
+                </div>
+            #end
+
+            <!-- Series -->
+            #if(!($series.isEmpty()))
+                <div class="categoryContainer">
+                    <h2>Series</h2>
+                    #foreach($show in $series)
+                        <div class="resultContainer">
+                            <a href="/show/$show.showID">$show.showTitle</a><span> ($show.getYear())</span>
+                        </div>
+                    #end
+                </div>
+            #end
+
+
+            <!-- People -->
+            #if(!($people.isEmpty()))
+                <div class="categoryContainer">
+                    <h2>People</h2>
+                    #foreach($person in $people)
+                        <div class="resultContainer">
+                            <a href="/person/$person.personID">$person.fullName</a>
+                        </div>
+                    #end
+                </div>
+            #end
+
+        #end
+
+    </div>
+
+
+
+
+#end

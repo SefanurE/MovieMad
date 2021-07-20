@@ -1,0 +1,133 @@
+
+#@mainLayout()
+
+    <link rel="stylesheet" href="/css/show.css">
+    #if($show)
+
+        <!-- Title -->
+        <div id="titleContainer">
+            #if(!($show.imagePath == ""))
+                <img src="$show.imagePath" alt="$show.showTitle poster" id="titleAreaImage">
+            #end
+            <h1 id="showTitle">$show.showTitle</h1>
+        </div>
+
+
+
+        <!-- Show Information -->
+        <hr class="divider" data-content="INFORMATION">
+        <div class="show">
+
+               <dl>
+                      <dt>Genre:</dt>
+                      <dd>$show.genre</dd>
+                      <dt>Air date:</dt>
+                     <dd>$show.year</dd>
+                     <dt>Duration:</dt>
+                     <dd>$show.length</dd>
+                     <dt>type:</dt>
+                     <dd>$show.type</dd>
+                     <dt>Production company:</dt>
+                     <dd>$productionCompany</dd>
+                     <dt>Duration:</dt>
+                     <dd>$show.length</dd>
+                       <dt>Description:</dt>
+                       <dd>$show.description</dd>
+
+               </dl>
+
+            #if ($userType == "admin")
+
+                <!-- Edit button -->
+                <form action="/showEdit/$show.getShowID()" method="POST">
+                    <button type="submit" name="action" value="edit" id="edit">
+                        <i class="material-icons">edit</i> Edit
+                    </button>
+                </form>
+
+
+                <!-- Suspend button -->
+                <form action="/showEditSuspend/$show.showID" method="POST">
+                    <input type="hidden" name="title" value=$show.title>
+                    <button type="submit" name="action" value="suspend" id="suspend" onclick="suspendFunction()">
+                        <i class="material-icons">SUSPEND</i>
+                    </button>
+                </form>
+
+                <!-- Delete button -->
+                <form action="/showEditDelete/$show.showID" method="POST">
+                    <input type="hidden" name="title" value=$show.title>
+                    <button type="submit" name="action" value="delete" id="delete" onclick="deleteFunction()">
+                        <i class="material-icons">DELETE</i>
+                    </button>
+                </form>
+
+            #elseif($userType == "pco" && $pcoID == $show.proCoID)
+                <!-- Edit button -->
+                <form action="/showEdit/$show.getShowID()" method="POST">
+                    <button type="submit" name="action" value="edit" id="edit">
+                        <i class="material-icons">edit</i> Edit
+                    </button>
+                </form>
+
+                <!-- Delete button -->
+                <form action="/showEditDelete/$show.showID" method="POST">
+                    <input type="hidden" name="title" value=$show.title>
+                    <button type="submit" name="action" value="delete" id="delete" onclick="deleteFunction()">
+                        <i class="material-icons">DELETE</i>
+                    </button>
+                </form>
+            #end
+
+        </div>
+
+
+
+        <!-- Credit roll: -->
+        <hr class="divider" data-content="CREDIT ROLL">
+        <table id="creditRollTable">
+            <tr>
+                <th>Character Name</th>
+                <th>Actor name</th>
+            </tr>
+            #set( $count = 0 )
+            #foreach($role in $creditRoll)
+            <tr>
+                <td>$role.characterName</td>
+                <td>$person.get($count).fullName</td>
+                #set( $count = $count + 1 )
+
+            </tr>
+
+            #end
+        </table>
+
+
+        <!-- Review Section -->
+        <hr class="divider" data-content="REVIEWS">
+        <div id="reviewSection">
+
+            <!-- Reviews-->
+            <div id="reviewContainer">
+                #if(!($reviewList.isEmpty()))
+                    #foreach($review in $reviewList)
+                            #parse("view/ratings-and-reviews/displayReview.vm")
+                    #end
+                #else
+                    <p id="noReviewMessage">There are no reviews. Add one!</p>
+                #end
+            </div>
+
+            <!-- Review show button -->
+            <div id="reviewLinkContainer">
+                <a href="/show/$show.showID/review">
+                    <input type="button" value="Leave a Review" id="reviewButton">
+                </a>
+            </div>
+        </div>
+
+
+    #else
+        <h1>Show not found</h1>
+    #end
+#end

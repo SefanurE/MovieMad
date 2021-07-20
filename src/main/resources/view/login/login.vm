@@ -1,0 +1,40 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+
+<link rel="stylesheet" href="/css/loginStylesheet.css">
+
+<form id="loginForm" method="post">
+	<h1>Login</h1>
+	    #if($userNotFound)
+	        <p class="notification">No matching username found, please try a different username.</p>
+	    #elseif($wrongPassword)
+	    <p class="notification">Incorrect Password, please try again.</p>
+	    #elseif($authenticationSucceeded)
+	    #end
+
+		#if($registrationSuccessful)
+			<p class="successfulRegistrationNotification">Registration successful. You may now log in if you are a basic user.
+				PCO and Critic accounts will have access after admin approval.</p>
+		#end
+
+		#if($accountPending)
+			<p class="accountPendingNotification">This account is still pending for approval.</p>
+		#end
+
+	    <div>
+		    <label>Username</label>
+		    <input type="text" name="username" placeholder="username" value="" required>
+		</div>
+		<div>
+		    <label>Password</label>
+		    <input type="password" name="password" placeholder="password" value="" required>
+	    </div>
+	     
+		#if($loginRedirect)
+	        <input type="hidden" name="loginRedirect" value="$loginRedirect">
+	    #end
+	    <div>
+	    	<input type="submit" value="Login">
+	    </div>
+</form>
+#end

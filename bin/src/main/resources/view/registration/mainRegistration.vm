@@ -1,0 +1,22 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+<link rel="stylesheet" href="/css/mainStylesheet.css">
+<link rel="stylesheet" href="/css/registrationStylesheet.css">
+
+
+    <!-- Buttons to go to separate registration pages -->
+    <div id="mainRegistrationContainer">
+        <div class="mainRegistrationButton">
+            <a href="/basicUserRegistration"><button class="btn">Basic Account</button></a>
+        </div>
+        <div class="mainRegistrationButton">
+            <a href="/criticRegistration"><button class="btn">Critic</button></a>
+        </div>
+        <div class="mainRegistrationButton">
+            <a href="/pcoRegistration"><button class="btn">Production Company</button></a>
+        </div>
+    </div>
+
+
+
+#end

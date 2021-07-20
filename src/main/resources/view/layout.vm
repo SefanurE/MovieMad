@@ -1,0 +1,70 @@
+#macro(mainLayout)
+<html>
+    <head>
+        <title>Movie Mad</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="/css/mainStylesheet.css">
+
+		<!-- jquery CDN hosted by google:https://developers.google.com/speed/libraries#jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+    	<div class="topnav">
+    		<a class="active" href="/home" id="sitename"> MovieMad </a>
+    		<button id="menu">
+    			<i class="material-icons">menu</i>
+    			Menu
+    		</button>
+    		<form id="search" action="/search" method="GET">
+    			<input type="text" name="query" id="search_box" placeholder="Search your favorite shows"></input>
+    			<button type="submit" id="search_btn"> <i class="material-icons">search</i> </button>
+				<script>
+					// Prevents search box from submitting when empty.
+					$("#search").submit(function(event) {
+						if($("#search_box").val() == "" || $("#search_box").val() == " ")
+							event.preventDefault();
+					});
+				</script>
+    		</form>
+    		<div id="user_area">
+    			#if($authenticationSucceeded) 
+    				<div id="user_details">
+		    			<a href="/logout" id="logout_btn" class="nav_btn">Logout</a>
+		    			<a href="" id="username" class="nav_btn">$currentUser</a>
+		    			#if ($userType == "admin") 
+		    				<div id="admin_actions_area" class="nav_btn">
+			    				<button id="admin_actions">
+					    			<i class="material-icons">menu</i>
+					    			Requests
+					    		</button>
+					    		<div id="admin_action_menu">
+					    			<a href="/accountRequest" id="accReq_btn" class="nav_btn">Account Requests</a> 
+					    			<br>
+					    			<a href="/showRequest" id="showReq_btn" class="nav_btn">Show Requests</a>
+									<br>
+									<a href="/showEntry" id="showEntry_btn" class="nav_btn">Add a Show</a>
+					    		</div>
+					    	</div>
+						#else
+							<a href="/showEntry" id="showEntry_btn" class="nav_btn">Add a Show</a>
+						#end	    				
+	    			</div>
+    			#else 
+	    			<div id="loginSignup_btn">
+			    		<a href="/mainregistration" id="register_btn" class="nav_btn">Register</a>
+			    		<a href="/login" id="login_btn" class="nav_btn">Login</a>
+		    		</div>
+	    		#end
+    		</div>
+    	</div>
+        
+        <main>
+            $bodyContent
+        </main>
+        <div id="footer"></div>
+    </body>
+</html>
+#end

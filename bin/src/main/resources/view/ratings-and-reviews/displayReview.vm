@@ -1,0 +1,55 @@
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/css/displayReviewsStylesheet.css">
+
+<!-- rateit jquery plugin by Gidon Junge: https://github.com/gjunge/rateit.js -->
+<link href="/plugins/rateit/rateit.css" rel="stylesheet" type="text/css">
+<script src="/plugins/rateit/jquery.rateit.js"></script>
+
+## A single review. To add to page use: #parse("view/ratings-and-reviews/displayReviews.vm")
+
+
+<div class="reviewContainer">
+
+
+    <!-- Container contains number rating + visual star rating -->
+    <div class="ratingContainer">
+        <div class="score"><h1>$review.rating/5</h1></div>
+        <div class="rateitContainer">
+            <div class="rateit"  data-rateit-mode="font"   data-rateit-readonly="true" data-rateit-value="$review.rating"  data-rateit-resetable="false"   style="font-size:50px"  ></div>
+        </div>
+    </div>
+
+    <!-- Container contains username + usertype + date review was published -->
+    <div class="bubbleContainer">
+        <div class="bubble" class="typeBubble"><p>Date Published: $review.publicationDate </p></div>
+    </div>
+
+    <!-- The review -->
+    <div class="textReviewContainer">
+        <p class="textReview">
+            $review.review
+        </p>
+    </div>
+
+    #if($review.accountStatus == "approved")
+        <div class="bigTextContainer">
+            <p class="bigText"> &ndash; by <a href="/home" class="bigTextBold">$review.userID </a> Verified $review.byUserType</p>
+        </div>
+    #else
+        <div class="bigTextContainer">
+            <p class="bigText"> &ndash; by <a href="/home" class="bigTextBold">$review.userID</a> Unverified $review.byUserType</p>
+        </div>
+    #end
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

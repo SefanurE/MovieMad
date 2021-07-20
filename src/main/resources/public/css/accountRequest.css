@@ -1,0 +1,69 @@
+#header {
+	padding: 10px;
+	background-color: black;
+	color: white;
+	font-size: larger;
+	margin-bottom: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+	background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tr:nth-child(even) > td {
+  border: 1px solid white;
+}
+
+#accountRequest > tbody > tr > td:nth-child(6), td:nth-child(7) {
+	text-align:center;
+}
+
+#showTable > tbody > tr > td:nth-child(9), td:nth-child(10) {
+	text-align:center;
+}
+
+form {
+	margin: auto;
+}
+
+form > button {
+	color: white;
+	padding: 4px;
+	border-radius: 50%; 
+	border: none;
+}
+
+#accept {
+	background-color: #339933;
+}
+
+#accept:hover {
+	background-color: #267326;
+}
+
+#decline {
+	background-color: #e60000;
+}
+
+#decline:hover {
+	background-color: #bb0000;
+}

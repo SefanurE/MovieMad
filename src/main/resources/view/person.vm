@@ -1,0 +1,49 @@
+
+#@mainLayout()
+
+<link rel="stylesheet" href="/css/person.css">
+    #if($person)
+
+    <!-- Person Name -->
+    <div id="personNameContainer">
+        <h1 id="personName">$person.fullName</h1>
+    </div>
+
+    <!-- Person Information -->
+    <hr class="divider" data-content="BIOGRAPHY">
+    <div class="person">
+        <dl>
+            <dt>Role:</dt>
+            <dd>$person.role</dd>
+            <dt>Birth date:</dt>
+            <dd>$person.birthDate</dd>
+            <dt>Bio:</dt>
+            <dd>$person.bio</dd>
+        </dl>
+    </div>
+
+
+    <!-- Filmography -->
+    <hr class="divider" data-content="Filmography">
+    <table id="FilmographyTable">
+        <tr>
+            <th>Character Name</th>
+            <th>Show</th>
+            <th>Year</th>
+        </tr>
+        #set( $count = 0 )
+        #foreach($credit in $credits)
+            <tr>
+                <td>$credit.characterName</td>
+                <td>$shows.get($count).showTitle</td>
+                <td>$shows.get($count).year</td>
+                #set( $count = $count + 1 )
+            </tr>
+
+        #end
+    </table>
+
+    #else
+    <h1>Person not found</h1>
+    #end
+#end

@@ -1,0 +1,96 @@
+
+
+.reviewContainer {
+    height: auto;
+    margin: 50px;
+    padding: 15px;
+    padding-top: 0;
+    border-radius: 10px;
+    background-color: white;
+
+    /* Box shadow by stripe: https://getcssscan.com/css-box-shadow-examples */
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+}
+
+
+
+
+
+/* Rating Container */
+
+.ratingContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.score {
+    padding: 10px;
+    padding-top: 5px;
+    align-self: center;
+}
+
+.rateitContainer {
+    align-self: center;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+
+/* Bubbles Container */
+
+.bubbleContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bubbleContainer > * {
+    margin-right: 15px;
+}
+
+.bubble {
+    display: inline-block;
+    width: auto;
+    border-radius: 15px;
+    padding: 6px 15px;
+    background-color: #d0d0d0;
+    color: black;
+}
+
+.typeBubble {
+    background-color: black;
+}
+
+
+/* The actual review Container */
+
+.textReviewContainer {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.textReview {
+    font-size: var(--formFontSize);
+}
+
+/* Big Text at End Container */
+
+.bigTextContainer {
+    padding: 10px;
+}
+
+.bigText {
+    font-size: 20px;
+}
+
+.bigTextBold {
+    font-weight: bold;
+    text-decoration: inherit;
+    color: black;
+}
+
+.bigTextBold:hover {
+    color: #ffb31a;
+
+}

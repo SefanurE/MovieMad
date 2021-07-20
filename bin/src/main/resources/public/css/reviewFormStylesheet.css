@@ -1,0 +1,164 @@
+#contentBox {
+    display: flex;
+    flex-direction: column;
+
+    width: 60%;
+    margin: auto;
+    height: 500px;
+
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+
+
+}
+
+/* Title Area CSS */
+
+#titleArea {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+
+}
+
+
+#titleAreaHeading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: black;
+    padding: 10px 15px;
+    border: #ffb31a solid 2px;
+    border-radius: 10px;
+}
+
+#titleAreaImage {
+    width: 100%;
+    -webkit-filter: blur(6px);
+    filter: blur(6px);
+
+}
+
+/* Form CSS */
+
+#formArea {
+    height: auto;
+
+
+}
+
+#yourReview {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 30px;
+    padding-left: 20px;
+}
+
+#yourReview > p {
+    color: white;
+    font-size: var(--formFontSize);
+}
+
+#form {
+    flex-direction: column;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+}
+
+.formGroup>* {
+    padding: 0 5px;
+}
+
+.formGroup label {
+    flex-basis: 100px;
+    margin: auto;
+    text-align: center;
+    font-size: var(--formFontSize);
+}
+
+.formGroup input, textarea {
+    width: 70%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 50px;
+    font-size: var(--formFontSize);
+    margin-left: auto;
+}
+
+.rateit {
+    width: 70%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 50px;
+    font-size: var(--formFontSize);
+    margin-left: auto;
+}
+
+.formGroup textarea {
+    resize: vertical;
+    max-height: 200px;
+    min-height: 48px;
+    font-size: var(--formFontSize);
+    padding: 10px;
+}
+
+.formGroup .submit {
+    width: 100px;
+    margin-left: auto;
+    background-color: #000000;
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    border-style: solid;
+    border-color: var(--textColor);
+    border-width: 1px;
+}
+
+.formGroup .submit:hover {
+    background-color: #3E3E3EFF;
+    cursor: pointer;
+}
+
+/* Back Button CSS */
+
+#backButtonContainer {
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+#backButton {
+    text-decoration: none;
+    padding: 12px 22px;
+    width: 100px;
+    background-color: #000000;
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    border-style: solid;
+    border-color: var(--textColor);
+    border-width: 1px;
+    border-radius: 10px;
+
+}
+
+#backButton:hover {
+    background-color: #3E3E3EFF;
+    cursor: pointer;
+}

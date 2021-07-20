@@ -1,0 +1,87 @@
+/* Stylesheet for all registration pages */
+* {
+	
+}
+
+.registrationHeading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 15%;
+	margin:auto;
+}
+
+.registrationForm {
+	margin: auto;
+	width: 450px;
+	padding-bottom: 50px;
+}
+
+.formGroup {
+	display: flex;
+	flex-direction: row;
+	margin: 15px 0;
+}
+
+.formGroup>* {
+	padding: 0 5px;
+}
+
+.formGroup label {
+	flex-basis: 100px;
+	align-self: center;
+	font-size: var(--formFontSize);
+}
+
+.formGroup input {
+	width: 70%;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	padding: 10px;
+	font-size: var(--formFontSize);
+	margin-left: auto;
+}
+
+.formGroup select {
+	width: 70%;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	padding: 10px;
+	font-size: var(--formFontSize);
+	margin-left: auto;
+}
+
+.formGroup .submit {
+	width: 100px;
+	margin-left: auto;
+	background-color: var(--secondaryColor);
+	height: 50px;
+	font-size: 20px;
+	border-style: solid;
+	border-color: var(--textColor);
+	border-width: 1px;
+}
+
+.formGroup .submit:hover {
+	background-color: var(--secondaryColorSlightlyDarker);
+	cursor: pointer;
+}
+
+/* -- mainRegistration Specific -- */
+#mainRegistrationContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 45%;
+	padding: 100px 0;
+}
+
+/* MainRegistration specific button */
+#mainRegistrationContainer button {
+	width: 250px;
+}
+
+/* -- registrationBasicUser Specific -- */

@@ -1,0 +1,67 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+	<link rel="stylesheet" href="/css/accountRequest.css">
+	<link rel="stylesheet" href="/css/snackbar.css">
+	
+	<div id="header">Account Request Approval</div>
+	
+	<div id="message_area">
+		#if($error)
+			<div class="snack-wrap">
+			  <input type="checkbox" class="snackclose animated" id="close"/><label class="snacklable animated" for="close"></label>  
+			  <div class="snackbar animated error">
+			     <p>$error</p>
+			  </div>
+			</div>
+		#elseif($message)
+			<div class="snack-wrap">
+			  <input type="checkbox" class="snackclose animated" id="close"/><label class="snacklable animated" for="close"></label>  
+			  <div class="snackbar animated success">
+			     <p>$message</p>
+			  </div>
+			</div>
+		#end
+	</div>
+	
+	#if($size == 0)
+		<p> No pending requests.</p>
+	#else
+		<table id="accountRequest">
+			<tr>
+				<th>User Type</th>
+				<th>User Name</th>
+				<th>Name</th>
+				<th>Company Name</th>
+				<th>Phone Number</th>
+				<th>Accept</th>
+				<th>Decline</th>		
+			</tr>
+			#foreach($rowData in $tableData) 
+				<tr>
+					<td>$rowData.accountType</td>
+					<td>$rowData.username</td>
+					<td>$rowData.firstName $rowData.lastName</td>
+					<td>$rowData.companyName</td>
+					<td>$rowData.phoneNum</td>
+					<td>
+						<form action="/accountRequest" method="POST">
+							<input type="hidden" name="username" value=$rowData.username>
+							<button type="submit" name="action" value="accept" id="accept">
+								<i class="material-icons">check</i>
+							</button>
+						</form>
+					</td>
+					<td>
+						<form action="/accountRequest" method="POST">
+							<input type="hidden" name="username" value=$rowData.username>
+							<button type="submit" name="action" value="decline" id="decline">
+								<i class="material-icons">clear</i>
+							</button>
+						</form
+					</td>
+				</tr>
+			#end
+		</table>
+	#end
+
+#end

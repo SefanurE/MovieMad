@@ -1,0 +1,22 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+
+    <link rel="stylesheet" href="/css/home.css">
+    <h1> Home </h1>
+    <h2> Featured movies: </h2>
+
+    <!-- show cards -->
+    <div class="cardContainer">
+        #set( $id = 1 )
+        #foreach($show in $shows)
+            <div class="card">
+                <!-- img would go here -->
+                <a href="/show/$id"> $show</a>
+                #set( $id = $id+1 )
+
+            </div>
+        #end
+    </div>
+
+
+#end
